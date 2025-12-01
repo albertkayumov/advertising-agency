@@ -1,0 +1,224 @@
+import React, { useState } from 'react'
+import './ContactPage.css'
+
+interface ContactFormData {
+  name: string
+  email: string
+  phone: string
+  message: string
+  service: string
+}
+
+export const ContactPage: React.FC = () => {
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+    service: ''
+  })
+
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  const services = [
+    { id: '', label: 'Выберите услугу' },
+    { id: 'branding', label: 'Брендинг' },
+    { id: 'digital', label: 'Digital-маркетинг' },
+    { id: 'smm', label: 'SMM' },
+    { id: 'web', label: 'Разработка сайтов' },
+    { id: 'mobile', label: 'Мобильные приложения' },
+    { id: 'support', label: 'Поддержка' },
+    { id: 'other', label: 'Другое' }
+  ]
+
+  const contactInfo = [
+    {
+      id: 1,
+      icon: '📍',
+      title: 'Адрес',
+      content: 'г. Казань, ул. Четаева, д. 18',
+      detail: 'БЦ "Центральный", офис 405'
+    },
+    {
+      id: 2,
+      icon: '📞',
+      title: 'Телефон',
+      content: '+7 (999) 999-99-99',
+      detail: 'Пн-Пт: 9:00 - 18:00'
+    },
+    {
+      id: 3,
+      icon: '✉️',
+      title: 'Email',
+      content: 'info@adagency.ru',
+      detail: 'Ответим в течение 24 часов'
+    },
+    {
+      id: 4,
+      icon: '⏰',
+      title: 'Режим работы',
+      content: 'Пн-Пт: 9:00 - 18:00',
+      detail: 'Сб-Вс: выходной'
+    }
+  ]
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target
+
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('Форма отправлена:', formData)
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 3000)
+    
+    // Сброс формы
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+      service: ''
+    })
+  }
+
+  return (
+    <div className="contact-page">
+      <div className="contact-page__container">
+        <header className="contact-page__header">
+          <h1 className="contact-page__title">Контакты</h1>
+          <p className="contact-page__subtitle">
+            Свяжитесь с нами для обсуждения вашего проекта
+          </p>
+        </header>
+
+        <div className="contact-page__content">
+          <div className="contact-page__info">
+            <h2 className="contact-page__section-title">Наши контакты</h2>
+            <div className="contact-page__info-grid">
+              {contactInfo.map((info) => (
+                <div key={info.id} className="contact-page__info-card">
+                  <div className="contact-page__info-icon">{info.icon}</div>
+                  <h3 className="contact-page__info-title">{info.title}</h3>
+                  <p className="contact-page__info-content">{info.content}</p>
+                  <p className="contact-page__info-detail">{info.detail}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="contact-page__map">
+              <div className="contact-page__map-placeholder">
+                Здесь будет интерактивная карта с расположением офиса
+              </div>
+            </div>
+          </div>
+
+          <div className="contact-page__form-section">
+            <h2 className="contact-page__section-title">Напишите нам</h2>
+            
+            {isSubmitted && (
+              <div className="contact-page__success">
+                Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.
+              </div>
+            )}
+
+            <form className="contact-page__form" onSubmit={handleSubmit}>
+              <div className="contact-page__form-group">
+                <label htmlFor="name" className="contact-page__form-label">
+                  Ваше имя *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="contact-page__form-input"
+                  required
+                  placeholder="Иван Иванов"
+                />
+              </div>
+
+              <div className="contact-page__form-group">
+                <label htmlFor="email" className="contact-page__form-label">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="contact-page__form-input"
+                  required
+                  placeholder="example@email.com"
+                />
+              </div>
+
+              <div className="contact-page__form-group">
+                <label htmlFor="phone" className="contact-page__form-label">
+                  Телефон
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="contact-page__form-input"
+                  placeholder="+7 (999) 999-99-99"
+                />
+              </div>
+
+              <div className="contact-page__form-group">
+                <label htmlFor="service" className="contact-page__form-label">
+                  Интересующая услуга
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="contact-page__form-select"
+                >
+                  {services.map((service) => (
+                    <option key={service.id} value={service.id}>
+                      {service.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="contact-page__form-group">
+                <label htmlFor="message" className="contact-page__form-label">
+                  Сообщение *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="contact-page__form-textarea"
+                  rows={5}
+                  required
+                  placeholder="Расскажите о вашем проекте или задайте вопрос..."
+                />
+              </div>
+
+              <button type="submit" className="contact-page__form-button">
+                Отправить сообщение
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
