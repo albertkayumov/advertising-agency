@@ -283,3 +283,20 @@ ui-library/
 ├── tsconfig.json
 ├── vite.config.js
 └── .gitignore
+
+## 📸 Скриншоты
+
+### Главная страница
+![Главная страница](screenshots/global.png)
+
+### Страница portfolio
+![Страница](screenshots/portfolio.png)
+
+### Страница services
+![Страница](screenshots/services.png)
+
+### Страница about
+![Страница](screenshots/about.png)
+
+### Страница contact
+![Страница](screenshots/contact.png)
