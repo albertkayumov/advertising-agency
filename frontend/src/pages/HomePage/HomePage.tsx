@@ -1,9 +1,10 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import { HeroSection } from '../../components/HeroSection'
 import { PortfolioSection } from '../../components/PortfolioSection'
 import { ServicesSection } from '../../components/ServicesSection'
-import { Link } from 'react-router-dom'
 import './HomePage.css'
 
 export const HomePage: React.FC = () => {
