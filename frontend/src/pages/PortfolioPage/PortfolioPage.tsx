@@ -54,6 +54,30 @@ export const PortfolioPage: React.FC = () => {
       characteristics: ['Логотип', 'Айдентика', 'Гайдлайны'],
       category: 'branding',
       images: ['https://placehold.co/400x200/17a2b8/ffffff/png?text=Morning+Brew']
+    },
+    {
+      id: 7,
+      title: 'Кампания для бренда моды',
+      description: 'Полный ребрендинг и запуск digital-кампании для fashion-бренда',
+      characteristics: ['Брендинг', 'SMM', 'Таргетинг'],
+      category: 'branding',
+      images: ['https://placehold.co/400x200/007bff/ffffff/png?text=Fashion']
+    },
+    {
+      id: 8,
+      title: 'Запуск мобильного приложения',
+      description: 'Комплексное продвижение нового продукта на рынок',
+      characteristics: ['Digital-маркетинг', 'ASO', 'PR'],
+      category: 'mobile',
+      images: ['https://placehold.co/400x200/28a745/ffffff/png?text=Mobile+App']
+    },
+    {
+      id: 9,
+      title: 'SMM для ресторана',
+      description: 'Развитие присутствия в социальных сетях и увеличение трафика',
+      characteristics: ['Контент-стратегия', 'Таргетинг', 'Аналитика'],
+      category: 'smm',
+      images: ['https://placehold.co/400x200/dc3545/ffffff/png?text=Restaurant']
     }
   ]
 

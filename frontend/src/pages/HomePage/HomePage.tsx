@@ -1,16 +1,10 @@
 import React from 'react'
 
-import { HeroSection } from '../../components/HeroSection'
-import { PortfolioSection } from '../../components/PortfolioSection'
-import { ServicesSection } from '../../components/ServicesSection'
 import './HomePage.css'
 
 export const HomePage: React.FC = () => {
   return (
     <div className="home-page">
-      <HeroSection />
-      <ServicesSection />
-      <PortfolioSection />
       <section className="cta-section">
         <div className="cta-section__container">
           <h2 className="cta-section__title">Готовы начать проект?</h2>

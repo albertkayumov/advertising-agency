@@ -1,7 +1,0 @@
-export { Header } from './Header'
-export { Footer } from './Footer'
-export { HeroSection } from './HeroSection'
-export { ServicesSection } from './ServicesSection'
-export { PortfolioSection } from './PortfolioSection'
-export { ContactForm } from './ContactForm'
-export { Modal } from './Modal'
