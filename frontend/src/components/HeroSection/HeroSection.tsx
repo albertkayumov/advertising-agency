@@ -1,5 +1,6 @@
 import React from 'react'
 import './HeroSection.css'
+import heroImage from '@assets/images/blog-office-manager-scaled.png'
 
 export const HeroSection: React.FC = () => {
   return (
@@ -23,9 +24,11 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
         <div className="hero-section__image">
-          <div className="hero-section__placeholder">
-            Здесь будет изображение героя секции
-          </div>
+          <img 
+            src={heroImage} 
+            alt="Маркетолог анализирует данные" 
+            className="hero-section__person-image"
+          />
         </div>
       </div>
     </section>

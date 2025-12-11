@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './ContactPage.css'
+import heroImage2 from '@assets/images/map.png'
 
 interface ContactFormData {
   name: string
@@ -13,7 +14,7 @@ export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
-    phone: '',
+    phone: '+7',
     message: '',
     service: ''
   })
@@ -73,6 +74,26 @@ export const ContactPage: React.FC = () => {
     }))
   }
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    
+    // Если пользователь пытается удалить +7, не позволяем этого
+    if (value.length < 3) {
+      setFormData(prev => ({
+        ...prev,
+        phone: '+7'
+      }));
+      return;
+    }
+    
+    const formattedPhone = formatPhoneNumber(value);
+    
+    setFormData(prev => ({
+      ...prev,
+      phone: formattedPhone
+    }));
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log('Форма отправлена:', formData)
@@ -88,6 +109,35 @@ export const ContactPage: React.FC = () => {
       service: ''
     })
   }
+
+  const formatPhoneNumber = (value: string): string => {
+    const phoneNumber = value.replace(/\D/g, '');
+    
+    if (phoneNumber.startsWith('7') || phoneNumber.startsWith('8') || phoneNumber.length === 0) {
+      const formattedNumber = phoneNumber.startsWith('7') || phoneNumber.startsWith('8') 
+        ? phoneNumber.substring(1) 
+        : phoneNumber;
+      
+      let result = '+7';
+      
+      if (formattedNumber.length > 0) {
+        result += ' (' + formattedNumber.substring(0, 3);
+      }
+      if (formattedNumber.length > 3) {
+        result += ') ' + formattedNumber.substring(3, 6);
+      }
+      if (formattedNumber.length > 6) {
+        result += '-' + formattedNumber.substring(6, 8);
+      }
+      if (formattedNumber.length > 8) {
+        result += '-' + formattedNumber.substring(8, 10);
+      }
+      
+      return result;
+    }
+    
+    return '+7' + phoneNumber;
+  };
 
   return (
     <div className="contact-page">
@@ -114,9 +164,11 @@ export const ContactPage: React.FC = () => {
             </div>
 
             <div className="contact-page__map">
-              <div className="contact-page__map-placeholder">
-                Здесь будет интерактивная карта с расположением офиса
-              </div>
+              <img 
+              src={heroImage2} 
+              alt="Маркетолог анализирует данные" 
+              className="hero-section__person-image"
+              />
             </div>
           </div>
 
@@ -164,17 +216,32 @@ export const ContactPage: React.FC = () => {
 
               <div className="contact-page__form-group">
                 <label htmlFor="phone" className="contact-page__form-label">
-                  Телефон
+                  Телефон *
                 </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="contact-page__form-input"
-                  placeholder="+7 (999) 999-99-99"
-                />
+                <div className="contact-page__input-wrapper">
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    className="contact-page__form-input"
+                    maxLength={18}
+                  />
+                  <div 
+                    className={`contact-page__input-mask ${formData.phone ? 'contact-page__input-mask--hidden' : ''}`}
+                  >
+                    <span className="contact-page__input-mask-text">+7</span>
+                    <span className="contact-page__input-mask-text" style={{ color: '#ccc' }}>
+                      &nbsp;(999) 999-99-99
+                    </span>
+                  </div>
+                </div>
+                {formData.phone && formData.phone.replace(/\D/g, '').length < 11 && (
+                  <div className="contact-page__error">
+                    Введите полный номер телефона (10 цифр)
+                  </div>
+                )}
               </div>
 
               <div className="contact-page__form-group">

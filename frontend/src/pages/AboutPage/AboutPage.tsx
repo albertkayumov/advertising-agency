@@ -1,5 +1,6 @@
 import React from 'react'
 import './AboutPage.css'
+import heroImage1 from '@assets/images/team.png'
 
 export const AboutPage: React.FC = () => {
   const teamMembers = [
@@ -57,9 +58,11 @@ export const AboutPage: React.FC = () => {
             </p>
           </div>
           <div className="about-page__intro-image">
-            <div className="about-page__image-placeholder">
-              Изображение офиса или команды
-            </div>
+            <img 
+            src={heroImage1} 
+            alt="Маркетолог анализирует данные" 
+            className="hero-section__person-image"
+            />
           </div>
         </section>
 

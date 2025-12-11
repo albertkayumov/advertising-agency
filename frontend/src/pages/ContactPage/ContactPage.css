@@ -1,3 +1,37 @@
+.contact-page__input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.contact-page__form-input {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+}
+
+.contact-page__input-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 0.75rem;
+  color: #999;
+  pointer-events: none;
+  font-size: 1rem;
+}
+
+.contact-page__input-mask--hidden {
+  opacity: 0;
+}
+
+.contact-page__input-mask-text {
+  color: #999;
+}
+
 .contact-page {
   padding: 60px 0;
   background-color: #f8f9fa;

@@ -13,6 +13,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@my-app/ui-library': resolve(__dirname, '../ui-library/src'),
+      '@assets': resolve(__dirname, './src/assets'),
     },
   },
   server: {

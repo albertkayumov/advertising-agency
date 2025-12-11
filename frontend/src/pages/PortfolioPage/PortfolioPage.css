@@ -72,10 +72,6 @@
   transition: transform 0.3s ease;
 }
 
-.portfolio-page__item:hover {
-  transform: translateY(-5px);
-}
-
 .portfolio-page__empty {
   text-align: center;
   padding: 60px;
