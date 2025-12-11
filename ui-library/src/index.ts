@@ -4,7 +4,7 @@ export { default as PhotoGallery } from './PhotoGallery/PhotoGallery'
 export { default as Button } from './Button/Button'
 export { default as Textarea } from './Textarea/Textarea'
 export { default as Input } from './Input/Input'
-export { default as PhoneInput } from './PhoneInput/PhoneInput';
+export { default as PhoneInput } from './PhoneInput/PhoneInput'
 
 export type { CardProps } from './Card/Card'
 export type { PortfolioCaseProps } from './PortfolioCase/PortfolioCase'

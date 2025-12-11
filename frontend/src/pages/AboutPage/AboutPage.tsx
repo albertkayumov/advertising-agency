@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './AboutPage.css'
 import heroImage1 from '@assets/images/team.png'
 
@@ -59,9 +60,9 @@ export const AboutPage: React.FC = () => {
           </div>
           <div className="about-page__intro-image">
             <img 
-            src={heroImage1} 
-            alt="Маркетолог анализирует данные" 
-            className="hero-section__person-image"
+              src={heroImage1} 
+              alt="Маркетолог анализирует данные" 
+              className="hero-section__person-image"
             />
           </div>
         </section>

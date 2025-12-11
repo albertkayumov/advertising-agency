@@ -1,4 +1,5 @@
 import React from 'react'
+
 import './HeroSection.css'
 import heroImage from '@assets/images/blog-office-manager-scaled.png'
 

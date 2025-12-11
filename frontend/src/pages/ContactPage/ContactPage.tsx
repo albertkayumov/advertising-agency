@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import './ContactPage.css'
 import heroImage2 from '@assets/images/map.png'
 
@@ -75,23 +76,24 @@ export const ContactPage: React.FC = () => {
   }
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+    const value = e.target.value
     
     // Если пользователь пытается удалить +7, не позволяем этого
     if (value.length < 3) {
       setFormData(prev => ({
         ...prev,
         phone: '+7'
-      }));
-      return;
+      }))
+
+      return
     }
     
-    const formattedPhone = formatPhoneNumber(value);
+    const formattedPhone = formatPhoneNumber(value)
     
     setFormData(prev => ({
       ...prev,
       phone: formattedPhone
-    }));
+    }))
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -111,33 +113,36 @@ export const ContactPage: React.FC = () => {
   }
 
   const formatPhoneNumber = (value: string): string => {
-    const phoneNumber = value.replace(/\D/g, '');
+    const phoneNumber = value.replace(/\D/g, '')
     
     if (phoneNumber.startsWith('7') || phoneNumber.startsWith('8') || phoneNumber.length === 0) {
       const formattedNumber = phoneNumber.startsWith('7') || phoneNumber.startsWith('8') 
         ? phoneNumber.substring(1) 
-        : phoneNumber;
+        : phoneNumber
       
-      let result = '+7';
+      let result = '+7'
       
       if (formattedNumber.length > 0) {
-        result += ' (' + formattedNumber.substring(0, 3);
+        result += ' (' + formattedNumber.substring(0, 3)
       }
+
       if (formattedNumber.length > 3) {
-        result += ') ' + formattedNumber.substring(3, 6);
+        result += ') ' + formattedNumber.substring(3, 6)
       }
+
       if (formattedNumber.length > 6) {
-        result += '-' + formattedNumber.substring(6, 8);
+        result += '-' + formattedNumber.substring(6, 8)
       }
+
       if (formattedNumber.length > 8) {
-        result += '-' + formattedNumber.substring(8, 10);
+        result += '-' + formattedNumber.substring(8, 10)
       }
       
-      return result;
+      return result
     }
     
-    return '+7' + phoneNumber;
-  };
+    return '+7' + phoneNumber
+  }
 
   return (
     <div className="contact-page">
@@ -165,9 +170,9 @@ export const ContactPage: React.FC = () => {
 
             <div className="contact-page__map">
               <img 
-              src={heroImage2} 
-              alt="Маркетолог анализирует данные" 
-              className="hero-section__person-image"
+                src={heroImage2} 
+                alt="Маркетолог анализирует данные" 
+                className="hero-section__person-image"
               />
             </div>
           </div>
